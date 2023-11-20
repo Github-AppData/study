@@ -12,7 +12,8 @@ import java.util.Map;
 public class TotalServicempl implements TotalService {
 
     @Autowired
-    TotalMapper totalMapper;
+    private TotalMapper totalMapper;
+
 
     @Override
     public List<Map<String, Object>> basicSelect() throws Exception {

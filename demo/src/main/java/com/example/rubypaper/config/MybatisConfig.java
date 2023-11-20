@@ -20,7 +20,7 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
         sqlSessionFactory.setDataSource(dataSource);
         sqlSessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver()
-                .getResources("classpath:mapper/*.xml")); // 매퍼 XML 파일 경로
+                    .getResources("classpath:mapper/*.xml")); // 매퍼 XML 파일 경로
         return sqlSessionFactory.getObject();
     }
 
