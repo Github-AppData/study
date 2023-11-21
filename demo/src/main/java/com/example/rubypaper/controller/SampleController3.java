@@ -31,4 +31,11 @@ public class SampleController3 {
         model.addAttribute("list", userList);
         return "001";
     }
+
+    @GetMapping("/002")
+    public String my002()
+    {
+        return "002";
+    }
+
 }

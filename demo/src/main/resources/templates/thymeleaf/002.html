@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>User ID</th>
+            <th>User Name</th>
+        </thead>
+        <tbody id="userListArea">
+
+        </tbody>
+    </table>
+
+    <script>
+        var xhr = new XMLHttpRequest();
+        var object;
+        var objLength;
+        var stored_data_Array = [];
+
+        var username_real = [];
+        var userid_real = [];
+        var newItemHTML = '';
+
+        window.onload = pageLoad;
+
+        function pageLoad(){
+            xhr.onreadystatechange = function ()
+            {
+                console.log("xhr.readState : ", xhr.readyState);
+                console.log("xhr.status : ", xhr.status);
+                if(xhr.readyState === 4)
+                {
+                    if(xhr.status === 200)
+                    {
+                        // JSON.parse : 전달된 JSON 문자열을 해석하여, JS 객체로 변환하는 함수이다.
+                        object = JSON.parse(xhr.responseText);
+                        objLength = Object.keys(object).length;
+                        console.log("object : ", object);
+
+                        // object는 JS 객체이기 때문에, 해당 위치의 프로퍼티로 접근이 가능하다.
+                        // * 데이터 구조는 유지 된 상태에서 가지고 왔으니,,,
+                        console.log("object : ", object[0].name);
+
+                        for (var i = 0; i < objLength; i++) {
+
+                            username_real[i] = object[i].name;
+                            userid_real[i] = object[i].user_id;
+
+                            var newItem
+                            = '<tr><td><h4> '+ userid_real[i] +'</h4></td>' +
+                                '<td><h4> '+ username_real[i] +'</h4></td></tr>';
+
+                            newItemHTML += newItem;
+
+                            // data가 추가 되더라도, 바로 반영할 수 있게끔.
+                            document.getElementById("userListArea").innerHTML
+                                = newItemHTML;
+
+                            // 전달받은 데이터를 추출하는 코드
+                            stored_data_Array.push({user_id: object[i].user_id, name: object[i].name});
+                        }
+                        console.log("stored_data_Array : ", stored_data_Array);
+                    }
+                } else {
+                    console.log("실패 했습니다.");
+                    console.log("xhr.readState : ", xhr.readyState);
+                    console.log("xhr.status : ", xhr.status);
+                }
+            }
+            xhr.open("POST", "/testServlet", true);
+            xhr.send(null);
+        }
+
+
+
+    </script>
+</body>
+</html>
