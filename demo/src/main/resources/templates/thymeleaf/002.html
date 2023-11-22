@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>002</title>
 </head>
 <body>
     <table>
+        <!-- Servlet에서 데이터를 받아와서 innerHTML로 데이터를 셋하는 코드 -->
         <thead>
             <th>User ID</th>
             <th>User Name</th>
@@ -71,7 +72,7 @@
                     console.log("xhr.status : ", xhr.status);
                 }
             }
-            xhr.open("POST", "/testServlet", true);
+            xhr.open("POST", "/test002Servlet", true);
             xhr.send(null);
         }
 

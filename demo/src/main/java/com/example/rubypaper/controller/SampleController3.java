@@ -38,4 +38,21 @@ public class SampleController3 {
         return "002";
     }
 
+    @GetMapping("/003")
+    public String my003(Model model)
+    {
+
+        List<Map<String, Object>> userList = new ArrayList<Map<String, Object>>();
+
+        try {
+            userList = totalService.basicSelect();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        System.out.println("userList = " + userList);
+
+        model.addAttribute("list", userList);
+        return "003";
+    }
+
 }
