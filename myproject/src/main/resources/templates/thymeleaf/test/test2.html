@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/toggle.css" type="text/css">
+
+</head>
+<body class="dark-example-02-wrapper">
+    <label>
+        <input role="switch" id="input" class="btn" type="checkbox" value="light" />
+        <span class="result">dark</span>
+    </label>
+    <div class="dark-example-02">
+        &nbsp;여러분들은 지금 어떤 컬러모드를 보고 있을까요?
+    </div>
+</body>
+
+<script>
+    const selectElement = document.querySelector(".btn");
+
+    selectElement.addEventListener("change", (event) => {
+        var input_name = document.getElementById("input").value;
+
+        // body class
+        const el = document.querySelector('.dark-example-02-wrapper');
+
+        const isLightMode = el.classList.contains('light'); // light를 포함하고 있으면 -> true\
+        const result = document.querySelector(".result");
+
+        console.log(input_name);
+
+        if(input_name == "light" && isLightMode)
+        {
+            // dark mode
+            el.classList.remove('light');
+            el.classList.add('dark')
+            document.getElementById("input").value = "dark";
+            result.textContent = `dark`;
+
+        } else {
+            el.classList.remove('dark');
+            el.classList.add('light')
+            document.getElementById("input").value = "light";
+            result.textContent = `light`;
+
+        }
+    });
+</script>
+</html>

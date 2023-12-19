@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style rel="stylesheet">
+        [type="checkbox"] {
+            appearance: none;
+        }
+
+        [type="checkbox"]::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            transform: scale(0.8);
+            background-color: grey;
+            transition: left 250ms linear;
+        }
+
+        [type="checkbox"]:disabled {
+            border-color: lightgray;
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        [type="checkbox"]::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 1em;
+            height: 1em;
+            border-radius: 50%;
+            transform: scale(0.8);
+            background-color: grey;
+            transition: left 250ms linear;
+        }
+
+        [type="checkbox"]:enabled:hover {
+            box-shadow: 0 0 0 max(4px, 0.2em) lightgray;
+        }
+
+        [type="checkbox"]:focus-visible {
+            outline-offset: max(2px, 0.1em);
+            outline: max(2px, 0.1em) solid tomato;
+        }
+
+        [type="checkbox"]:disabled:before {
+            background-color: lightgray;
+        }
+
+        [type="checkbox"]:disabled + span {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        [type="checkbox"]:checked::before {
+            background-color: white;
+            left: 1em;
+        }
+
+        [type="checkbox"]:checked {
+            background-color: tomato;
+            border-color: tomato;
+        }
+
+
+        [type="checkbox"] {
+            appearance: none;
+            position: relative;
+            border: max(2px, 0.1em) solid grey;
+            border-radius: 1.25em;
+            width: 2.25em;
+            height: 1.25em;
+        }
+
+        label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+        .dark-example-02 {
+            background: black;
+            color: white;
+            border: 2px;
+            border-style: solid;
+            border-color: white;
+            border-radius: 6px;
+            height: 50px;
+            margin-bottom: 10px;
+        }
+
+        .light .dark-example-02 {
+            background: white;
+            color: black;
+            border-color: black;
+        }
+
+        .dark-example-02-btn {
+            background-color: #e7e7e7;
+            color: black;
+            border: none;
+            padding: 7px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="dark">
+
+    <div class="dark-example-02-wrapper">
+        <label><input type="checkbox" role="switch" onclick="(function(){
+        const el = document.querySelector('.dark-example-02-wrapper');
+        const isLightMode = el.classList.contains('light'); // light를 포함하고 있으면 -> true
+        if(isLightMode){
+          // dark mode
+          el.classList.remove('light');
+          el.classList.add('dark')
+        } else {
+          // light mode
+          el.classList.remove('dark');
+          el.classList.add('light')
+        }
+        return false;
+    })();return false;"/><span>모드</span></label>
+        <div class="dark-example-02">
+            &nbsp;여러분들은 지금 어떤 컬러모드를 보고 있을까요?
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
