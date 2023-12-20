@@ -9,32 +9,11 @@
         .table{
             width: 20%;
             border-collapse: collapse;
-            border: 1px solid #ddd;
-            margin-bottom: 20px;
-        }
-        /*table {
-            width: 100%;
-            border-collapse: collapse;
             margin-bottom: 20px;
         }
 
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        */
       .body{
         background: white;
-          z-index: 0;
       }
     </style>
 </head>
@@ -72,19 +51,24 @@
     {
       console.log("changeColor");
       var in_name = document.getElementById("input").value;
-        const result = document.querySelector(".result");
+      const result = document.querySelector(".result");
+      const el = document.querySelector('.table');
 
 
       if(in_name == "light")
       {
-        document.getElementById("input").value = "dark";
-        document.querySelector(".body").style.background="black";
-        // result.textContent = "light";
-        //   result.style.color = "white";
-
+          // dark mode
+          document.getElementById("input").value = "dark";
+          document.querySelector(".body").style.background="black";
+          document.querySelector(".body").style.color="white";
       } else {
-        document.getElementById("input").value = "light";
-        document.querySelector(".body").style.background="white";
+
+          // light mode
+          document.getElementById("input").value = "light";
+          document.querySelector(".body").style.background="white";
+          document.querySelector(".body").style.color="black";
+          el.classList.remove('border');
+
         // result.textContent = "dark";
         //   result.style.color = "black";
       }
